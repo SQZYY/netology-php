@@ -9,7 +9,7 @@ $secondName = [];
 
     foreach ($animals as $animal) {
         $nameOfAnimal = str_word_count($animal, 1);
-            if (count($nameOfAnimal) > 1)
+            if (count($nameOfAnimal) == 2)
             {
                 $firstName[] = $nameOfAnimal[0];
                 $secondName[] = $nameOfAnimal[1];
