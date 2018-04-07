@@ -13,6 +13,8 @@ $secondName = [];
             {
                 $firstName[] = $nameOfAnimal[0];
                 $secondName[] = $nameOfAnimal[1];
+            } elseif (count($nameOfAnimal) > 2) {
+                continue;
             }
     }
 
