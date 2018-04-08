@@ -21,7 +21,7 @@ $secondName = [];
 shuffle($firstName);
 shuffle($secondName);
 
-for ($i = 0; $i <= count($firstName); $i++)
+for ($i = 0; $i < count($firstName); $i++)
 {
     echo $firstName[$i] . ' ' . $secondName[$i];
     echo '<br>';
