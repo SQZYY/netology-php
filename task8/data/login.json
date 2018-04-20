@@ -1,0 +1,12 @@
+[
+  {
+    "login": "admin",
+    "username": "Администратор",
+    "is_admin": 1
+  },
+  {
+    "login": "guest",
+    "username": "Гость",
+    "is_admin": 0
+  }
+]
