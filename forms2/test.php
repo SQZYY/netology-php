@@ -6,7 +6,7 @@ $uploaddir = './tests/';
 if (isset($_GET['test']) AND file_get_contents($uploaddir . ($_GET['test']))) {
     $test = json_decode(file_get_contents($uploaddir . ($_GET['test'])), true);
 } else {
-    include('404.htm');
+    include('404.php');
     die();
 }
 
