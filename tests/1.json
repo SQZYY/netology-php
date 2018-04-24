@@ -1,12 +1,22 @@
 {
   "test1": {
-    "question": "6+6=",
-    "variables": {
+    "question1": "6+6=",
+    "variables1": {
       "first": 13,
       "second": 11,
       "third": 12,
       "fourth": 10
     },
     "result": 12
+  },
+  "test2": {
+    "question2": "6+7=",
+    "variables2": {
+      "first": 13,
+      "second": 11,
+      "third": 12,
+      "fourth": 10
+    },
+    "result": 13
   }
 }
