@@ -27,19 +27,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <body>
         <form action="" method="post">
             <fieldset>
-                <?php foreach ($test as $key => $value) { ?>
-                <label for="test"><?= $value['question1']; }?></label><br>
-                <?php foreach ($value['variables'] as $var) {echo $var . '<br>'; } ?>
-                <input type="hidden" name="test" value="<?= $value['result']?>">
-                <label><input type="text" name="answer"></label>
-                <br>
-                <?php foreach ($test as $key => $value) { ?>
-                <label for="test"><?= $value['question2']; }?></label><br>
-                <?php foreach ($value['variables2'] as $var) {echo $var . '<br>'; } ?>
-                <input type="hidden" name="test" value="<?= $value['result']?>">
-                <label><input type="text" name="answer"></label>
+                <?php
+                foreach ($test as $key => $value) {
+                ?>
+                <label for="test"><?=  $value['question']; ?></label><br>
+                <?php
+                foreach ($value['variables'] as $var) {
+                    echo $var . '<br>';
+                }
+                ?>
+                <input type="hidden" name="test" value="<?= $value['result'] ?>">
+                <label><input type="text" name="answer"></label><br>
+                <?php
+                }
+                ?>
                 <input type="submit" value="Узнать результат">
-                <br>
             </fieldset>
         </form>
         <a href="./admin.php">Загрузить новый тест</a><br>

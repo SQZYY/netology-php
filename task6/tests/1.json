@@ -1,7 +1,7 @@
 {
   "test1": {
-    "question1": "6+6=",
-    "variables1": {
+    "question": "6+6=",
+    "variables": {
       "first": 13,
       "second": 11,
       "third": 12,
@@ -10,10 +10,10 @@
     "result": 12
   },
   "test2": {
-    "question2": "6+7=",
-    "variables2": {
+    "question": "6+7=",
+    "variables": {
       "first": 13,
-      "second": 11,
+      "second": 14,
       "third": 12,
       "fourth": 10
     },

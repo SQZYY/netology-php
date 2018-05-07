@@ -8,5 +8,15 @@
       "fourth": 10
     },
     "result": 12
+  },
+  "test2": {
+    "question": "6+7=",
+    "variables": {
+      "first": 13,
+      "second": 14,
+      "third": 12,
+      "fourth": 10
+    },
+    "result": 13
   }
 }
