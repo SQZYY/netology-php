@@ -1,11 +1,11 @@
 <?php
 
-interface Father
+interface CarTrademark
 {
-    public function things($color, $trademark, $price, $discount, $name);
+    public function carTrademark();
 }
 
-class Car implements Father
+class CarFactory implements CarTrademark
 {
     public $color = 'Black';
     public $trademark = 'Audi';
@@ -13,69 +13,107 @@ class Car implements Father
     public $discount = 10;
     public $speed = 200;
 
-    public function things($color, $trademark, $price, $discount, $name){}
+    public function carTrademark()
+    {
+        return 'Машина марки Audi';
+    }
 }
 
-$car = new Car();
+$carFactory = new CarFactory();
 
-$car->color;
-$car->trademark;
-$car->price;
-$car->discount;
-$car->speed;
+$carFactory->color;
+$carFactory->trademark;
+$carFactory->price;
+$carFactory->discount;
+$carFactory->speed;
 
-class FastCar extends Car{}
-
-$fastCar = new FastCar();
-
-$fastCar->color = 'Red';
-$fastCar->trademark = 'BMW';
-$fastCar->price = 15000000;
-$fastCar->discount = 5;
-$fastCar->speed = 220;
-
-class Tv implements Father
+class SportCar extends CarFactory
 {
-    public $trademark;
-    public $price;
-    public $discount;
-    public $diagonal;
-
-    public function things($color, $trademark, $price, $discount, $name){}
+    public function carTrademark()
+    {
+        return 'Машина марки BMW';
+    }
 }
 
-$tv = new Tv();
+$sportCar = new SportCar();
 
-$tv->trademark = 'Sony';
-$tv->price = 60000;
-$tv->discount = 15;
-$tv->diagonal = 40;
+$sportCar->color = 'Red';
+$sportCar->trademark = 'BMW';
+$sportCar->price = 15000000;
+$sportCar->discount = 5;
+$sportCar->speed = 220;
 
-class FullHd extends Tv{}
 
-$fullHd = new FullHd();
-
-$fullHd->trademark = 'LG';
-$fullHd->price = 50000;
-$fullHd->discount = 5;
-$fullHd->diagonal = 45;
-
-class BallPointPen implements Father
+interface TvType
 {
-    public $color;
-    public $trademark;
-    public $price;
-
-    public function things($color, $trademark, $price, $discount, $name){}
+    public function tvType();
 }
 
-$pen = new BallPointPen();
+class Led implements TvType
+{
+    public $trademark = 'Sony';
+    public $price = 60000;
+    public $discount = 15;
+    public $diagonal = 40;
 
-$pen->color = 'Blue';
-$pen->trademark = 'Cross';
-$pen->price = 2000;
+    public function tvType()
+    {
+        return 'LED телевизор';
+    }
+}
 
-class OtherPen extends BallPointPen {}
+$led = new Led();
+
+$led->trademark;
+$led->price;
+$led->discount;
+$led->diagonal;
+
+class Pdp extends Led
+{
+    public function tvType()
+    {
+        return 'PDP телевизор';
+    }
+}
+
+$pdp = new Pdp();
+
+$pdp->trademark = 'LG';
+$pdp->price = 10000;
+$pdp->discount = 5;
+$pdp->diagonal = 25;
+
+interface Trademark
+{
+    public function company();
+}
+
+class BallPointPen implements Trademark
+{
+    public $color = 'Blue';
+    public $trademark = 'Cross';
+    public $price = 2000;
+
+    public function company()
+    {
+        return 'Шариковая ручка фирмы Cross';
+    }
+}
+
+$ballPen = new BallPointPen();
+
+$ballPen->color;
+$ballPen->trademark;
+$ballPen->price;
+
+class OtherPen extends BallPointPen
+{
+    public function company()
+    {
+        return 'Шариковая ручка фирмы Erich Krause';
+    }
+}
 
 $otherPen = new OtherPen();
 
@@ -83,44 +121,73 @@ $otherPen->color = 'Green';
 $otherPen->trademark = 'Erich Krause';
 $otherPen->price = 200;
 
-class Duck implements Father
-{
-    public $color;
-    public $name;
 
-    public function things($color, $trademark, $price, $discount, $name){}
+interface DuckColor
+{
+    public function color();
+}
+
+class Duck implements DuckColor
+{
+    public $color = 'Gray';
+    public $name = 'Sean';
+
+    public function color()
+    {
+        return 'Утка серого цвета';
+    }
 }
 
 $duck = new Duck();
 
-$duck->color = 'Gray';
-$duck->name = 'Sean';
+$duck->color;
+$duck->name;
 
-class Anas extends Duck {}
+class Anas extends Duck
+{
+    public function color()
+    {
+        return 'А эта утка коричневого цвета';
+    }
+}
 
 $anas = new Anas();
 
 $anas->color = 'Brown';
 $anas->name = 'River Duck';
 
-class Product implements Father
+interface Discount
 {
-    public $trademark;
-    public $price;
-    public $discount;
-    public $name;
+    public function discount();
+}
 
-    public function things($color, $trademark, $price, $discount, $name){}
+class Product implements Discount
+{
+    public $trademark = 'Karcher';
+    public $price = 60000;
+    public $discount = 10;
+    public $name = 'Vacuum cleaner';
+
+    public function discount()
+    {
+        return 'На этот товар скидка 10 процентов';
+    }
 }
 
 $product = new Product();
 
-$product->trademark = 'Karcher';
-$product->price = 60000;
-$product->discount = 10;
-$product->name = 'Vacuum cleaner';
+$product->trademark;
+$product->price;
+$product->discount;
+$product->name;
 
-class Pullover extends Product {}
+class Pullover extends Product
+{
+    public function discount()
+    {
+        return 'На этот товар скидка 15 процентов';
+    }
+}
 
 $pullover = new Pullover();
 
