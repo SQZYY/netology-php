@@ -1,0 +1,12 @@
+{
+    "name": "sq7y/geo",
+    "authors": [
+        {
+            "name": "Egor Opryshko",
+            "email": "egorax1le@yandex.ru"
+        }
+    ],
+    "require": {
+        "yandex/geo": "^1.1"
+    }
+}
