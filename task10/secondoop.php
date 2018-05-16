@@ -1,5 +1,176 @@
 <?php
 
+class Car
+{
+    public $trademark = 'BMW ';
+    public $behavior;
+    public $speed;
+    public $color = 'White ';
+
+    public function __construct()
+    {
+        $this->speed = rand(0, 10);
+        if ($this->speed >= 1) {
+            $this->behavior = 'Набирает скорость ';
+        } else {
+            $this->behavior = 'Стоит на месте ';
+        }
+    }
+}
+
+$firstCar = new Car();
+
+
+echo $firstCar->color;
+echo $firstCar->trademark;
+echo $firstCar->behavior;
+echo $firstCar->speed . '<br>';
+
+class Mercedes extends Car
+{
+}
+
+$secondCar = new Mercedes();
+
+echo $secondCar->color = 'Red ';
+echo $secondCar->trademark = 'Mercedes ';
+echo $secondCar->behavior;
+echo $secondCar->speed . '<br>';
+
+class Tv
+{
+    public $trademark = 'LG ';
+    public $price;
+    public $addons;
+
+    public function __construct()
+    {
+        $this->price = rand(10000, 40000);
+        if ($this->price >= 25000) {
+            $this->addons = 'SmartTV ';
+        } else {
+            $this->addons;
+        }
+    }
+}
+
+$firstTv = new Tv();
+
+echo $firstTv->trademark;
+echo $firstTv->addons;
+echo $firstTv->price . '<br>';
+
+class Samsung extends Tv
+{
+}
+
+$secondTv = new Samsung();
+
+echo $secondTv->trademark = 'Samsung ';
+echo $secondTv->addons;
+echo $secondTv->price . '<br>';
+
+class BallPointPen
+{
+    public $trademark;
+    public $color;
+    public $price;
+
+    public function __construct()
+    {
+        $this->price = rand(1000, 4000);
+        if ($this->price >= 2500) {
+            $this->trademark = 'Parker ';
+            $this->color = 'Blue ';
+        } else {
+            $this->trademark = 'Waterman ';
+            $this->color = 'Black ';
+        }
+    }
+}
+
+$firstPen = new BallPointPen();
+
+echo $firstPen->color;
+echo $firstPen->trademark;
+echo $firstPen->price . '<br>';
+
+class SecondPen extends BallPointPen
+{
+}
+
+$secondPen = new SecondPen();
+
+echo $secondPen->color;
+echo $secondPen->trademark;
+echo $secondPen->price . '<br>';
+
+class Duck
+{
+    public $price;
+    public $type;
+    public $color;
+
+    public function __construct()
+    {
+        $this->price = rand(100, 1000);
+        if ($this->price >= 300) {
+            $this->color = 'Yellow ';
+            $this->type = 'Plush Duck ';
+        } else {
+            $this->color = 'Yellow ';
+            $this->type = 'Plastic Duck ';
+        }
+    }
+}
+
+$firstDuck = new Duck();
+
+echo $firstDuck->color;
+echo $firstDuck->type;
+echo $firstDuck->price . '<br>';
+
+class SecondDuck extends Duck
+{
+}
+
+$secondDuck = new SecondDuck();
+
+echo $secondDuck->color;
+echo $secondDuck->type;
+echo $secondDuck->price . '<br>';
+
+class Product
+{
+    public $price;
+    public $discount;
+
+    public function __construct()
+    {
+        $this->price = rand(20000, 40000);
+        if ($this->price >= 30000) {
+            $this->discount = ' 15%';
+        } else {
+            $this->discount = ' 10%';
+        }
+    }
+}
+
+$firstProduct = new Product();
+
+echo $firstProduct->price;
+echo $firstProduct->discount . '<br>';
+
+class SecondProduct extends Product
+{
+}
+
+$secondProduct = new Product();
+
+echo $secondProduct->price;
+echo $secondProduct->discount;
+
+
 interface CarTrademark
 {
     public function carTrademark();
@@ -89,7 +260,7 @@ interface Trademark
     public function company();
 }
 
-class BallPointPen implements Trademark
+class PenTrademark implements Trademark
 {
     public $color = 'Blue';
     public $trademark = 'Cross';
@@ -101,13 +272,13 @@ class BallPointPen implements Trademark
     }
 }
 
-$ballPen = new BallPointPen();
+$ballPen = new PenTrademark();
 
 $ballPen->color;
 $ballPen->trademark;
 $ballPen->price;
 
-class OtherPen extends BallPointPen
+class OtherPen extends PenTrademark
 {
     public function company()
     {
@@ -127,7 +298,7 @@ interface DuckColor
     public function color();
 }
 
-class Duck implements DuckColor
+class Ducks implements DuckColor
 {
     public $color = 'Gray';
     public $name = 'Sean';
@@ -138,12 +309,12 @@ class Duck implements DuckColor
     }
 }
 
-$duck = new Duck();
+$duck = new Ducks();
 
 $duck->color;
 $duck->name;
 
-class Anas extends Duck
+class Anas extends Ducks
 {
     public function color()
     {
@@ -161,7 +332,7 @@ interface Discount
     public function discount();
 }
 
-class Product implements Discount
+class ProductDiscount implements Discount
 {
     public $trademark = 'Karcher';
     public $price = 60000;
@@ -174,14 +345,14 @@ class Product implements Discount
     }
 }
 
-$product = new Product();
+$product = new ProductDiscount();
 
 $product->trademark;
 $product->price;
 $product->discount;
 $product->name;
 
-class Pullover extends Product
+class PulloverDiscount extends ProductDiscount
 {
     public function discount()
     {
@@ -189,7 +360,7 @@ class Pullover extends Product
     }
 }
 
-$pullover = new Pullover();
+$pullover = new PulloverDiscount();
 
 $pullover->trademark = 'Adidas';
 $pullover->price = 3000;
