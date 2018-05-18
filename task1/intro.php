@@ -8,7 +8,8 @@ $about = 'Веб-программист';
 
 ?>
 
-<html>
+<!DOCTYPE>
+<html lang="ru">
     <head>
         <title>Егор - Программист</title>
 		<meta charset="utf-8">
@@ -16,11 +17,9 @@ $about = 'Веб-программист';
 			body {
                 font-family: sans-serif;
             }
-            
             dl {
                 display: table-row;
             }
-            
             dt, dd {
                 display: table-cell;
                 padding: 6px;
@@ -39,7 +38,7 @@ $about = 'Веб-программист';
         </dl>
         <dl>
             <dt>Адрес электронной почты</dt>
-            <dd><a href=""><?= $email ?></a></dd>
+            <dd><a href="#"><?= $email ?></a></dd>
         </dl>
         <dl>
             <dt>Город</dt>
