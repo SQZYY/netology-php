@@ -1,19 +1,19 @@
 <?php
 
-	$weatherApi = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=4164138&appid=b3f8410463fe5ea9ad814bab9b43588a');
+    $weatherApi = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=4164138&appid=b3f8410463fe5ea9ad814bab9b43588a');
 
-	$weather = json_decode($weatherApi, true);
+    $weather = json_decode($weatherApi, true);
 
     $country = $weather ['sys']['country'];
-	$city = $weather ['name'];
-	$temperature = $weather ['main']['temp'];
+    $city = $weather ['name'];
+    $temperature = $weather ['main']['temp'];
     $calvin = 273.15;
     $temp = $temperature - $calvin;
     $weatherMain = $weather ['weather'][0]['main'];
     $weatherDesc = $weather ['weather'][0]['description'];
     $windSpeed = $weather ['wind']['speed'];
-	$pressure = $weather ['main']['pressure'];
-	$humidity = $weather ['main']['humidity'];
+    $pressure = $weather ['main']['pressure'];
+    $humidity = $weather ['main']['humidity'];
 
 ?>
 
