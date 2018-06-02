@@ -19,8 +19,8 @@
 			<th>Имя</th>
 			<th>Фамилия</th>
 			<th>Город</th>
-            <th>Улица</th>
-            <th>Почтовый индекс</th>
+            		<th>Улица</th>
+            		<th>Почтовый индекс</th>
 			<th>Телефонные номера</th>
 		</tr>
 		<?php foreach ($json as $item) { ?>
@@ -34,8 +34,7 @@
 			<td><?= $manyNumbers ?></td>
             <?php } ?>
 		</tr>
-		<?php
-        } ?>
+		<?php } ?>
 	</table>
 </body>
 </html>
