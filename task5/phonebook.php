@@ -1,5 +1,5 @@
 <?php
-	$telBook = file_get_contents("telBook.json");
+	$telBook = file_get_contents("telbook.json");
 	$json = json_decode($telBook, true);
 ?>
 <!DOCTYPE html>
