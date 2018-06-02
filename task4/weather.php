@@ -1,8 +1,17 @@
 <?php
 
-	$weatherApi = file_get_contents('http://api.openweathermap.org/data/2.5/weather?id=4164138&appid=b3f8410463fe5ea9ad814bab9b43588a');
+    $link = 'http://api.openweathermap.org/data/2.5/weather?id=4164138&appid=b3f8410463fe5ea9ad814bab9b43588a';
+    $weatherApi = file_get_contents($link);
+
+    if ($weatherApi == false) {
+        exit('Не удалось получить данные');
+    }
 
 	$weather = json_decode($weatherApi, true);
+
+    if ($weather === null) {
+        exit('Ошибка декодирования json');
+    }
 
     $country = $weather ['sys']['country'];
 	$city = $weather ['name'];
@@ -10,10 +19,10 @@
     $calvin = 273.15;
     $temp = $temperature - $calvin;
     $weatherMain = $weather ['weather'][0]['main'];
-    $weatherDesc = $weather ['weather'][0]['description'];
     $windSpeed = $weather ['wind']['speed'];
 	$pressure = $weather ['main']['pressure'];
 	$humidity = $weather ['main']['humidity'];
+	$icon = $weather ['weather'][0]['icon'];
 
 ?>
 
@@ -51,39 +60,21 @@
                 <th><strong>Влажность</strong></th>
             </tr>
             <tr>
-                <td><?= $country; ?></td>
-                <td><?= $city; ?></td>
-                <td><?= $temp . '°'; ?></td>
+                <td><?= (!empty($country)) ? $country : 'Не удалось получить название страны'; ?></td>
+                <td><?= (!empty($city)) ? $city : 'Не удалось получить название города'; ?></td>
+                <td><?= (!empty($temp)) ? $temp . '°' : 'Не удалось получить температуру'; ?></td>
                 <td><?php
-                    if ($weatherMain == 'Clear') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/01d.png">';
-                    }
-                    if ($weatherMain == 'Clouds') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/03d.png">';
-                    }
-                    if ($weatherMain == 'Rain') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/10d.png">';
-                    }
-                    if ($weatherMain == 'Thunderstorm') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/11d.png">';
-                    }
-                    if ($weatherMain == 'Snow') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/13d.png">';
-                    }
-                    if ($weatherMain == 'Haze') {
-                        echo $weatherMain . '<br/>';
-                        echo '<img src="http://openweathermap.org/img/w/50d.png">';
+                    if (!empty($weatherMain)) {
+                        echo (!empty($weatherMain)) ? $weatherMain . '<br/>' .
+                            '<img src="\http://openweathermap.org/img/w/$icon.png\">': 'Не удалось получить погоду';
+                    } else {
+                        echo 'Не удалось получить погоду';
                     }
                     ?>
                 </td>
-                <td><?= $windSpeed . ' м/с';?></td>
-                <td><?= $pressure . ' мм рт. ст'; ?></td>
-                <td><?= $humidity . '%'; ?></td>
+                <td><?= (!empty($windSpeed)) ? $windSpeed . ' м/с': 'Не удалось получить скорость ветра';?></td>
+                <td><?= (!empty($pressure)) ? $pressure . ' мм рт. ст': 'Не удалось получить давлении'; ?></td>
+                <td><?= (!empty($humidity)) ? $humidity . '%': 'Не удалось получить влажность'; ?></td>
             </tr>
         </table>
     </body>
