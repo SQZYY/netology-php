@@ -1,6 +1,6 @@
 <?php
-	$telbook = file_get_contents("telbook.json");
-	$json = json_decode($telbook, true);
+	$telBook = file_get_contents("telBook.json");
+	$json = json_decode($telBook, true);
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,17 +18,24 @@
 		<tr>
 			<th>Имя</th>
 			<th>Фамилия</th>
-			<th>Адрес</th>
-			<th>Телефонный номер</th>
+			<th>Город</th>
+            <th>Улица</th>
+            <th>Почтовый индекс</th>
+			<th>Телефонные номера</th>
 		</tr>
 		<?php foreach ($json as $item) { ?>
 		<tr>
-			<td><?php echo $item['firstName'] ?></td>
-			<td><?php echo $item['lastName'] ?></td>
-			<td><?php echo $item['address'] ?></td>
-			<td><?php echo $item['phoneNumber'] ?></td>
+			<td><?= $item['firstName'] ?></td>
+			<td><?= $item['lastName'] ?></td>
+            <?php foreach ($item['address'] as $manyAddresses) { ?>
+			<td><?= $manyAddresses ?></td>
+            <?php } ?>
+            <?php foreach ($item['phoneNumbers'] as $manyNumbers) { ?>
+			<td><?= $manyNumbers ?></td>
+            <?php } ?>
 		</tr>
-		<?php } ?>
+		<?php
+        } ?>
 	</table>
 </body>
 </html>

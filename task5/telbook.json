@@ -1,18 +1,42 @@
 [{
   "firstName": "Иван",
   "lastName": "Иванов",
-  "address": "г.Москва, ул. Алиева, 2",
-  "phoneNumber": "812 123-1234"
+  "address": {
+    "city":"г. Москва",
+    "street":"ул. Алиева, 2",
+    "postalCode":"125009"
+  },
+  "phoneNumbers": {
+    "firstNum":"812 123-1234",
+    "secondNum":"732 823-9156"
+  }
 }, 
 {
   "firstName": "Александр",
   "lastName": "Петров",
-  "address": "г.Воронеж, ул. Лизюкова, 38",
-  "phoneNumber": "865 968-7395"
+  "address": {
+    "city":"г.Воронеж",
+    "street":"ул. Лизюкова, 38",
+    "postalCode":"394000"
+  },
+  "phoneNumbers": {
+    "firstNum":"865 968-7395",
+    "secondNum":"721 124-874",
+    "thirdNum":"742 875-031"
+  }
 },
 {
   "firstName": "Михаил",
   "lastName": "Михайлов",
-  "address": "г.Калининград, ул. Строителей, 23",
-  "phoneNumber": "874 726-9203"
+  "address": {
+    "city":"г.Калининград",
+    "street":"ул. Строителей, 23",
+    "postalCode":"445212"
+  },
+  "phoneNumbers": {
+    "firstNum":"231 987-432",
+    "secondNum":"721 124-874",
+    "thirdNum":"742 875-031",
+    "fourthNum": "862 734-623"
+  }
 }]
