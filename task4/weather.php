@@ -66,7 +66,7 @@
                 <td><?php
                     if (!empty($weatherMain)) {
                         echo (!empty($weatherMain)) ? $weatherMain . '<br/>' .
-                            '<img src="\http://openweathermap.org/img/w/$icon.png\">': 'Не удалось получить погоду';
+                            "<img src=\"http://openweathermap.org/img/w/$icon.png\">": 'Не удалось получить погоду';
                     } else {
                         echo 'Не удалось получить погоду';
                     }
