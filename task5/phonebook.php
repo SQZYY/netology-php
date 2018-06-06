@@ -18,23 +18,20 @@
 		<tr>
 			<th>Имя</th>
 			<th>Фамилия</th>
-			<th>Город</th>
-            		<th>Улица</th>
-            		<th>Почтовый индекс</th>
+			<th>Адрес</th>
 			<th>Телефонные номера</th>
 		</tr>
 		<?php foreach ($json as $item) { ?>
 		<tr>
 			<td><?= $item['firstName'] ?></td>
 			<td><?= $item['lastName'] ?></td>
-            <?php foreach ($item['address'] as $manyAddresses) { ?>
-			<td><?= $manyAddresses ?></td>
-            <?php } ?>
-            <?php foreach ($item['phoneNumbers'] as $manyNumbers) { ?>
-			<td><?= $manyNumbers ?></td>
-            <?php } ?>
+            <?php $addresses = implode('<br>', $item['address']); ?>
+			<td><?= $addresses ?></td>
+            <?php $numbers = implode('<br>', $item['phoneNumbers']); ?>
+			<td><?= $numbers ?></td>
 		</tr>
-		<?php } ?>
+		<?php
+        } ?>
 	</table>
 </body>
 </html>
