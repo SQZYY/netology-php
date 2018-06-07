@@ -14,17 +14,14 @@ if (file_exists($filename)) {
     die();
 }
 
-foreach ($test as $key => $value) {
-    $answerNum = $value['result'];
-
-    var_dump($_POST["answer_[$key][$answerNum]"]);
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ("answer_[$key][$answerNum]" === "???") {
-        echo 'Правильно!';
-    } else {
-        echo 'Неправильно!';
-    }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    foreach ($test as $key => $value) {
+        $testNum = $value['result'];
+        if ($testNum == $_POST[$key]) {
+            echo 'Правильно' . '<br>';
+        } else {
+            echo 'Не правильно' . '<br>';
+        }
     }
 }
 
@@ -39,17 +36,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post">
             <fieldset>
                 <?php
-                foreach ($test as $key => $value) {
+                foreach ($test as $name => $value) {
                     $answerNum = $value['result'];
                 ?>
-                <label for="answer_<?= $key; ?>"><?= $value['question']; ?></label><br>
+                <label for="answer_<?= $name; ?>"><?= $value['question']; ?></label><br>
                 <?php
                 foreach ($value['variables'] as $var) {
                     echo $var . '<br>';
                 }
                 ?>
                 <label>
-                    <input type="text" name="answer_<?= $key; ?>">
+                    <input type="text" name="<?= $name; ?>">
                 </label><br>
                 <?php
                 }
