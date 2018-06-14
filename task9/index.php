@@ -2,10 +2,10 @@
 
 class Car
 {
-    public $trademark = 'BMW ';
+    public $trademark = 'Audi ';
     public $behavior;
     public $speed;
-    public $color = 'White ';
+    public $color = 'Red ';
 
     public function __construct()
     {
@@ -25,24 +25,24 @@ echo $firstCar->color;
 echo $firstCar->trademark;
 echo $firstCar->behavior;
 echo $firstCar->speed . '<br>';
-echo $secondCar->color = 'Red ';
+echo $secondCar->color = 'White ';
 echo $secondCar->trademark = 'Mercedes ';
 echo $secondCar->behavior;
 echo $secondCar->speed . '<br>';
 
 class Tv
 {
-    public $trademark = 'LG ';
+    public $trademark = 'Sony ';
     public $price;
     public $addons;
 
     public function __construct()
     {
-        $this->price = rand(10000, 40000);
-        if ($this->price >= 25000) {
+        $this->price = rand(20000, 40000);
+        if ($this->price >= 30000) {
             $this->addons = 'SmartTV ';
         } else {
-            $this->addons;
+            $this->addons = 'LED ';
         }
     }
 }
