@@ -1,19 +1,27 @@
 <?php
 
+if (!isset($_GET['test'])) {
+    header('Location: ./list.php');
+    die();
+}
+
 $filename = './tests/' . $_GET['test'];
 
 if (file_exists($filename)) {
     $test = json_decode(file_get_contents($filename), true);
 } else {
-    header('Location: ./list.php');
+    include('404.htm');
     die();
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($_POST['answer'] === $_POST['test']) {
-        echo 'Правильно!';
-    } else {
-        echo 'Неправильно!';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    foreach ($test as $key => $value) {
+        $testNum = $value['result'];
+        if ($testNum == $_POST[$key]) {
+            echo 'Правильно' . '<br>';
+        } else {
+            echo 'Не правильно' . '<br>';
+        }
     }
 }
 
@@ -25,20 +33,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <title>Тест</title>
     </head>
     <body>
-        <form action="" method="post">
+        <form action="./testdone.php" method="post">
             <fieldset>
+                <label for="name">Введите имя:</label>
+                <input type="text" name="name" placeholder="Имя"><br>
                 <?php
-                foreach ($test as $key => $value) {
-                ?>
-                <label for="test"><?=  $value['question']; ?></label><br>
-                <?php
-                foreach ($value['variables'] as $var) {
-                    echo $var . '<br>';
-                }
-                ?>
-                <input type="hidden" name="test" value="<?= $value['result'] ?>">
-                <label><input type="text" name="answer"></label><br>
-                <?php
+                foreach ($test as $name => $value) {
+                    $answerNum = $value['result'];
+                    ?>
+                    <label for="answer_<?= $name; ?>"><?= $value['question']; ?></label><br>
+                    <?php
+                    foreach ($value['variables'] as $var) {
+                        echo $var . '<br>';
+                    }
+                    ?>
+                    <label>
+                        <input type="text" name="<?= $name; ?>">
+                    </label><br>
+                    <?php
                 }
                 ?>
                 <input type="submit" value="Узнать результат">
