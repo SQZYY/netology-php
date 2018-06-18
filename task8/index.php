@@ -1,25 +1,18 @@
 <?php
-require_once __DIR__ . '/functions.php';
 
-if (isAuthorized()) {
-    redirect('list');
-}
-
+require_once 'functions.php';
 $errors = [];
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $login = $_POST['login'];
-
-    if (login($login)) {
-        redirect('list');
+if (!empty($_POST)) {
+    if (login($_POST['login'])) {
+        header('Location: list.php');
+        die;
     } else {
-        $errors[] = 'Логин введен не верно';
+        $errors[] = 'Неверный логин';
     }
 }
-
 ?>
 
-<!doctype html>
+<!Doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-wrap">
                         <h1>Авторизация</h1>
                         <ul>
-                            <? foreach ($errors as $error): ?>
+                            <?php foreach ($errors as $error): ?>
                                 <li><?= $error ?></li>
-                            <? endforeach; ?>
+                            <?php endforeach; ?>
                         </ul>
                         <form method="POST" id="login-form" action="">
                             <div class="form-group">

@@ -2,50 +2,46 @@
 
 session_start();
 
-function login($login) {
+function login($login)
+{
     $user = getUser($login);
-    if ($user && $user['user'] == $login) {
+    if ($user && $user['login'] == $login) {
         $_SESSION['user'] = $user;
         return true;
     }
     return false;
 }
 
-function isAuthorized() {
-    return !empty($_SESSION['user']);
-}
-
-function isAdmin() {
-    return isAuthorized() && $_SESSION['user']['is_admin'];
-}
-
-function getUsers() {
-    $fileData = file_get_contents(__DIR__ . '/data/login.json');
-    $users = json_decode($fileData, true);
-    if (empty($users)) {
-        return [];
-    }
-    return $users;
-}
-
-function getUser($login) {
+function getUser($login)
+{
     $users = getUsers();
     foreach ($users as $user) {
         if ($user['login'] == $login) {
-            header("Location: list.php");
-            die;
+            return $user;
         }
     }
     return null;
 }
 
-function logout()
+function getUsers()
 {
-    session_destroy();
-    header('Location: index.php');
+    $usersData = file_get_contents(__DIR__ . '/data/login.json');
+    if (!$usersData) {
+        return [];
+    }
+    $users = json_decode($usersData, true);
+    if (!$users) {
+        return [];
+    }
+    return $users;
 }
 
-function redirect($page) {
-    header("Location: $page.php");
-    die;
+function isAuthorized()
+{
+    return !empty($_SESSION['user']);
+}
+
+function isAdmin()
+{
+    return $_SESSION['user']['is_admin'];
 }
