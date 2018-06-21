@@ -2,10 +2,10 @@
 
 session_start();
 
-function login($login)
+function login($login, $password)
 {
     $user = getUser($login);
-    if ($user && $user['login'] == $login) {
+    if ($user && $user['password'] == $password) {
         $_SESSION['user'] = $user;
         return true;
     }

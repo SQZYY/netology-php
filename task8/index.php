@@ -3,11 +3,11 @@
 require_once 'functions.php';
 $errors = [];
 if (!empty($_POST)) {
-    if (login($_POST['login'])) {
+    if (login($_POST['login'], $_POST['password'])) {
         header('Location: list.php');
         die;
     } else {
-        $errors[] = 'Неверный логин';
+        $errors[] = 'Неверный логин или пароль';
     }
 }
 ?>
@@ -35,6 +35,10 @@ if (!empty($_POST)) {
                             <div class="form-group">
                                 <label for="lg" class="sr-only">Логин</label>
                                 <input type="text" placeholder="Логин" name="login" id="lg" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="key" class="sr-only">Пароль</label>
+                                <input type="password" placeholder="Пароль" name="password" id="key" class="form-control">
                             </div>
                             <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Войти">
                         </form>
