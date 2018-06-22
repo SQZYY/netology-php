@@ -1,8 +1,13 @@
 <?php
 
-class Car
+class Father
 {
-    public $trademark = 'BMW ';
+    public $trademark;
+    public $price;
+}
+
+class Mercedes extends Father
+{
     public $behavior;
     public $speed;
     public $color = 'White ';
@@ -11,36 +16,24 @@ class Car
     {
         $this->speed = rand(0, 10);
         if ($this->speed >= 1) {
-            $this->behavior = 'Набирает скорость ';
+            $this->behavior = ' Набирает скорость ';
         } else {
-            $this->behavior = 'Стоит на месте ';
+            $this->behavior = ' Стоит на месте ';
         }
     }
 }
 
-$firstCar = new Car();
+$car = new Mercedes();
+
+echo $car->color = 'Red ';
+echo $car->trademark = 'Mercedes ';
+echo $car->price = 5000000;
+echo $car->behavior;
+echo $car->speed . '<br>';
 
 
-echo $firstCar->color;
-echo $firstCar->trademark;
-echo $firstCar->behavior;
-echo $firstCar->speed . '<br>';
-
-class Mercedes extends Car
+class Samsung extends Father
 {
-}
-
-$secondCar = new Mercedes();
-
-echo $secondCar->color = 'Red ';
-echo $secondCar->trademark = 'Mercedes ';
-echo $secondCar->behavior;
-echo $secondCar->speed . '<br>';
-
-class Tv
-{
-    public $trademark = 'LG ';
-    public $price;
     public $addons;
 
     public function __construct()
@@ -54,27 +47,16 @@ class Tv
     }
 }
 
-$firstTv = new Tv();
-
-echo $firstTv->trademark;
-echo $firstTv->addons;
-echo $firstTv->price . '<br>';
-
-class Samsung extends Tv
-{
-}
-
 $secondTv = new Samsung();
 
 echo $secondTv->trademark = 'Samsung ';
 echo $secondTv->addons;
 echo $secondTv->price . '<br>';
 
-class BallPointPen
+
+class BallPointPen extends Father
 {
-    public $trademark;
     public $color;
-    public $price;
 
     public function __construct()
     {
@@ -89,25 +71,15 @@ class BallPointPen
     }
 }
 
-$firstPen = new BallPointPen();
+$pen = new BallPointPen();
 
-echo $firstPen->color;
-echo $firstPen->trademark;
-echo $firstPen->price . '<br>';
+echo $pen->color;
+echo $pen->trademark;
+echo $pen->price . '<br>';
 
-class SecondPen extends BallPointPen
+
+class ToyDuck extends Father
 {
-}
-
-$secondPen = new SecondPen();
-
-echo $secondPen->color;
-echo $secondPen->trademark;
-echo $secondPen->price . '<br>';
-
-class Duck
-{
-    public $price;
     public $type;
     public $color;
 
@@ -116,33 +88,26 @@ class Duck
         $this->price = rand(100, 1000);
         if ($this->price >= 300) {
             $this->color = 'Yellow ';
-            $this->type = 'Plush Duck ';
+            $this->type = ' Plush Duck ';
+            $this->trademark = 'Plush Duck Company ';
         } else {
             $this->color = 'Yellow ';
-            $this->type = 'Plastic Duck ';
+            $this->type = ' Plastic Duck ';
+            $this->trademark = 'Plastic Duck Company ';
         }
     }
 }
 
-$firstDuck = new Duck();
+$toyDuck = new ToyDuck();
 
-echo $firstDuck->color;
-echo $firstDuck->type;
-echo $firstDuck->price . '<br>';
+echo $toyDuck->trademark;
+echo $toyDuck->price;
+echo $toyDuck->type;
+echo $toyDuck->color . '<br>';
 
-class SecondDuck extends Duck
+
+class Product extends Father
 {
-}
-
-$secondDuck = new SecondDuck();
-
-echo $secondDuck->color;
-echo $secondDuck->type;
-echo $secondDuck->price . '<br>';
-
-class Product
-{
-    public $price;
     public $discount;
 
     public function __construct()
@@ -156,19 +121,11 @@ class Product
     }
 }
 
-$firstProduct = new Product();
+$discountProduct = new Product();
 
-echo $firstProduct->price;
-echo $firstProduct->discount . '<br>';
-
-class SecondProduct extends Product
-{
-}
-
-$secondProduct = new Product();
-
-echo $secondProduct->price;
-echo $secondProduct->discount;
+echo $discountProduct->trademark = 'Metro ';
+echo $discountProduct->price;
+echo $discountProduct->discount;
 
 
 interface CarTrademark
