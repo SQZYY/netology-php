@@ -10,6 +10,7 @@ $filename = './tests/' . $_GET['test'];
 if (file_exists($filename)) {
     $test = json_decode(file_get_contents($filename), true);
 } else {
+    http_response_code(404);
     include('404.htm');
     die();
 }

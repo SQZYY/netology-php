@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $testFileName = __DIR__ . '/tests/';
         $successMoved = move_uploaded_file($testTmpFileName, $testFileName . $testName);
         header('Location: list.php');
+        exit;
     }
 }
 
