@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 ?>
 
+<!Doctype html>
 <html>
     <head>
         <meta charset="utf-8">

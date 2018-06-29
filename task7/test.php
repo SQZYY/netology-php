@@ -15,26 +15,29 @@ if (file_exists($filename)) {
     die();
 }
 
+$right = 0;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     foreach ($test as $key => $value) {
         $testNum = $value['result'];
         if ($testNum == $_POST[$key]) {
-            echo 'Правильно' . '<br>';
-        } else {
-            echo 'Не правильно' . '<br>';
+            $right++;
         }
     }
+    ?> <img src="certificate.php?name=<?= $_POST['name']?>&right=<?= $right; ?>">
+    <?php die;
 }
 
 ?>
 
+<!Doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>Тест</title>
     </head>
     <body>
-        <form action="./testdone.php" method="post">
+        <form action="" method="post">
             <fieldset>
                 <label for="name">Введите имя:</label>
                 <input type="text" name="name" placeholder="Имя"><br>

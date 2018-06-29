@@ -5,6 +5,7 @@ $scan = array_diff(scandir($dir), array('..', '.'));
 
 ?>
 
+<!Doctype html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -12,9 +13,9 @@ $scan = array_diff(scandir($dir), array('..', '.'));
     </head>
     <body>
         <h1>Список тестов:</h1>
-                <?php foreach ($scan as $test) { ?>
-                <a href='test.php?test=<?php echo $test; ?>'><?php echo $test . '<br>'; ?></a>
-        <?php } ?>
+            <?php foreach ($scan as $test) { ?>
+                <a href='test.php?test=<?= $test; ?>'><?= $test . '<br>'; ?></a>
+            <?php } ?>
         <a href="admin.php">Загрузить новый тест</a><br>
     </body>
 </html>
