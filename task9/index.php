@@ -2,13 +2,15 @@
 
 class Car
 {
-    public $trademark = 'Audi ';
+    public $trademark;
     public $behavior;
     public $speed;
-    public $color = 'Red ';
+    public $color;
 
-    public function __construct()
+    public function __construct($trademark, $color)
     {
+        $this->trademark = $trademark;
+        $this->color = $color;
         $this->speed = rand(0, 10);
         if ($this->speed >= 1) {
             $this->behavior = 'Набирает скорость ';
@@ -18,26 +20,27 @@ class Car
     }
 }
 
-$firstCar = new Car();
-$secondCar = new Car();
+$firstCar = new Car('Audi ', 'Red ');
+$secondCar = new Car('Mercedes ', 'White ');
 
 echo $firstCar->color;
 echo $firstCar->trademark;
 echo $firstCar->behavior;
 echo $firstCar->speed . '<br>';
-echo $secondCar->color = 'White ';
-echo $secondCar->trademark = 'Mercedes ';
+echo $secondCar->color;
+echo $secondCar->trademark;
 echo $secondCar->behavior;
 echo $secondCar->speed . '<br>';
 
 class Tv
 {
-    public $trademark = 'Sony ';
+    public $trademark;
     public $price;
     public $addons;
 
-    public function __construct()
+    public function __construct($trademark)
     {
+        $this->trademark = $trademark;
         $this->price = rand(20000, 40000);
         if ($this->price >= 30000) {
             $this->addons = 'SmartTV ';
@@ -47,13 +50,13 @@ class Tv
     }
 }
 
-$firstTv = new Tv();
-$secondTv = new Tv();
+$firstTv = new Tv('Sony ');
+$secondTv = new Tv('Samsung ');
 
 echo $firstTv->trademark;
 echo $firstTv->addons;
 echo $firstTv->price . '<br>';
-echo $secondTv->trademark = 'Samsung ';
+echo $secondTv->trademark;
 echo $secondTv->addons;
 echo $secondTv->price . '<br>';
 
